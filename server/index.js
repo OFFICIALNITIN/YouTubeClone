@@ -15,7 +15,7 @@ const PORT = process.env.PORT;
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://devyoutubeclone.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Specify allowed methods
     credentials: true, // Allow cookies to be sent if needed
   })
