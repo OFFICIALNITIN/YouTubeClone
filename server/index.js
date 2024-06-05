@@ -7,6 +7,7 @@ import videoRoutes from "./routes/video.js";
 import commentRoutes from "./routes/comment.js";
 import bodyParser from "body-parser";
 import path from "path";
+import helmet from "helmet";
 
 dotenv.config();
 
@@ -20,6 +21,12 @@ app.use(
     credentials: true, // Allow cookies to be sent if needed
   })
 );
+app.use(helmet());
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+  next();
+});
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use("/upload", express.static(path.join("upload")));
