@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import moment from "moment";
+import videojs from "video.js";
+import "video.js/dist/video-js.css";
 import "./videoPage.css";
 import LikeWatchLaterSaveButton from "./LikeWatchLaterSaveButton";
 import Comments from "../../components/comments/Comments";
@@ -8,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addToHistory } from "../../actions/History";
 import { viewVideo } from "../../actions/video";
+import VideoJS from "../../components/VideoJS";
 
 function VideoPage() {
   const dispatch = useDispatch();
@@ -17,6 +20,33 @@ function VideoPage() {
   // const channels = useSelector((state) => state.channelReducers);
   // const currentChannel = channels?.filter((c) => c._id === vid)[0];
   const CurrentUser = useSelector((state) => state.currentUserReducer);
+  const playerRef = React.useRef(null);
+
+  const videoJsOptions = {
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    sources: [
+      {
+        src: `https://youtubeclone-l7cv.onrender.com/${vv?.filePath}`,
+        type: "video/mp4",
+      },
+    ],
+  };
+
+  const handlePlayerReady = (player) => {
+    playerRef.current = player;
+
+    // You can handle player events here, for example:
+    player.on("waiting", () => {
+      videojs.log("player is waiting");
+    });
+
+    player.on("dispose", () => {
+      videojs.log("player will dispose");
+    });
+  };
 
   const handeHistory = () => {
     dispatch(
@@ -45,12 +75,17 @@ function VideoPage() {
       <div className="container_videoPage">
         <div className="container2_videopage">
           <div className="video_display_screen_videoPage">
-            <video
-              src={`https://youtubeclone-l7cv.onrender.com/${vv?.filePath}`}
+            <VideoJS
+              options={videoJsOptions}
+              onReady={handlePlayerReady}
+              className={"video_ShowVideo_videoPage"}
+            />
+            {/* <video
+              src={`http://localhost:8000/${vv?.filePath}`}
               className={"video_ShowVideo_videoPage"}
               controls
               // autoPlay
-            ></video>
+            ></video> */}
             <div className="video_details_videoPage">
               <div className="video_btns_title_VideoPage_cont">
                 <p className="video_title_VideoPage">{vv.videoTitle}</p>
