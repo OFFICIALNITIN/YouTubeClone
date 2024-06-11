@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String },
   desc: { type: String },
   joinedOn: { type: Date, default: Date.now },
+  points: { type: Number, default: 0 },
 });
 
 export default mongoose.model("User", userSchema);

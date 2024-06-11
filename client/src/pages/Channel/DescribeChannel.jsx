@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaEdit, FaUpload } from "react-icons/fa";
 import "./describeChannel.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserPoints } from "../../actions/points.js";
 
-function DescribeChannel({ setEditCreateChannel, cid, setVidUploadPage }) {
+const DescribeChannel = ({ setEditCreateChannel, cid, setVidUploadPage }) => {
+  const dispatch = useDispatch();
   const CurrentUser = useSelector((state) => state.currentUserReducer);
   const channels = useSelector((state) => state.channelReducers);
   const currentChannel = channels?.filter((c) => c._id === cid)[0];
+  const Points = useSelector((state) => state.pointsReducer);
+
+  useEffect(() => {
+    if (CurrentUser?.result._id) {
+      dispatch(getUserPoints({ userId: CurrentUser?.result._id }));
+    }
+  }, []);
+
+  console.log(Points);
 
   return (
     <div className="container3_channel">
@@ -16,6 +27,7 @@ function DescribeChannel({ setEditCreateChannel, cid, setVidUploadPage }) {
       <div className="description_channel">
         <b>{currentChannel?.name}</b>
         <p>{currentChannel?.desc}</p>
+        <p>Points :{Points.points}</p>
       </div>
       {CurrentUser?.result._id === currentChannel?._id && (
         <>
@@ -37,6 +49,6 @@ function DescribeChannel({ setEditCreateChannel, cid, setVidUploadPage }) {
       )}
     </div>
   );
-}
+};
 
 export default DescribeChannel;

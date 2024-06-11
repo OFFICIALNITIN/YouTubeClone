@@ -6,6 +6,8 @@ const videoReducer = (state = { data: null }, action) => {
       return { ...state };
     case "FETCH_ALL_VIDEOS":
       return { ...state, data: action.payload };
+    case "WATCH_VIDEO":
+      return { ...state };
     default:
       return state;
   }

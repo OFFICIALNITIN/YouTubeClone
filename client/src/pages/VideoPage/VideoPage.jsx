@@ -9,7 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addToHistory } from "../../actions/History";
-import { viewVideo } from "../../actions/video";
+import { viewVideo, watchVideo } from "../../actions/video";
 import VideoJS from "../../components/VideoJS";
 
 function VideoPage() {
@@ -29,7 +29,7 @@ function VideoPage() {
     fluid: true,
     sources: [
       {
-        src: `https://youtubeclone-l7cv.onrender.com/${vv?.filePath}`,
+        src: `http://localhost:8000/${vv?.filePath}`,
         type: "video/mp4",
       },
     ],
@@ -45,6 +45,11 @@ function VideoPage() {
 
     player.on("dispose", () => {
       videojs.log("player will dispose");
+    });
+    player.on("ended", () => {
+      if (CurrentUser) {
+        dispatch(watchVideo({ userId: CurrentUser?.result._id, videoId: vid }));
+      }
     });
   };
 

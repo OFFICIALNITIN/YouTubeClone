@@ -41,3 +41,14 @@ export const viewVideo = (ViewData) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const watchVideo = (watchData) => async (dispatch) => {
+  const { userId, videoId } = watchData;
+
+  try {
+    const data = await api.watchVideo(userId, videoId);
+    dispatch({ type: "WATCH_VIDEO", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

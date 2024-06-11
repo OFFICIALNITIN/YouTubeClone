@@ -1,5 +1,10 @@
 import express from "express";
-import { uploadVideo, getAllVideos } from "../controllers/video.js";
+import {
+  uploadVideo,
+  getAllVideos,
+  watchVideo,
+  getUserPoints,
+} from "../controllers/video.js";
 import { likeController } from "../controllers/like.js";
 import { viewController } from "../controllers/view.js";
 import auth from "../middleware/auth.js";
@@ -27,6 +32,9 @@ routes.post("/uploadVideo", auth, upload.single("file"), uploadVideo);
 routes.get("/getvideos", getAllVideos);
 routes.patch("/like/:id", likeController);
 routes.patch("/view/:id", viewController);
+
+routes.post("/watch-video", watchVideo);
+routes.get("/points/:userId", auth, getUserPoints);
 
 routes.post("/likedvideo", auth, likeVideoController);
 routes.get("/getAlllikeVideo", getAllLikeVideoController);

@@ -1,6 +1,6 @@
 import axios from "axios";
 const API = axios.create({
-  baseURL: `https://youtubeclone-l7cv.onrender.com`,
+  baseURL: `http://localhost:8000`,
 });
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("Profile")) {
@@ -60,3 +60,8 @@ export const updateComment = (id, commentBody) =>
   API.patch(`/comment/update/${id}`, { commentBody });
 
 export const getAllComment = () => API.get("/comment/get");
+
+export const watchVideo = (userId, videoId) =>
+  API.post("/video/watch-video", { userId, videoId });
+
+export const points = (userId) => API.get(`/video/points/${userId}`);
