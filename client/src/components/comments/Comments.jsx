@@ -35,7 +35,10 @@ function Comments({ videoId }) {
   };
   return (
     <>
-      <form className="comments_sub_form_comments" onSubmit={handleOnSubmit}>
+      <form
+        className={`comments_sub_form_comments  ${CurrentUser?.theme}`}
+        onSubmit={handleOnSubmit}
+      >
         <input
           type="text"
           placeholder="add comment..."

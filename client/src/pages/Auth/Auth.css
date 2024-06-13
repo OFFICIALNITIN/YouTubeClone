@@ -1,3 +1,4 @@
+/* Default (dark mode) styles */
 .Auth_container {
   width: 100vw;
   height: 100vh;
@@ -58,4 +59,23 @@
   flex-direction: column;
   cursor: pointer;
   text-decoration: none;
+}
+
+/* White theme */
+.white .Auth_Container2 {
+  background-color: rgb(250, 250, 250);
+  color: black;
+  border-color: rgba(192, 192, 192, 0.6);
+}
+
+.white .email_Auth {
+  color: black;
+}
+
+.white .btn_Auth {
+  color: black;
+}
+
+.white .btn_Auth:hover {
+  background-color: rgb(240, 240, 240);
 }

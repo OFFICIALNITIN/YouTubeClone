@@ -1,3 +1,4 @@
+/* Default (dark mode) styles */
 .container_whl {
   margin: 0;
   display: flex;
@@ -38,4 +39,26 @@
 
 .whl_list {
   overflow-y: auto;
+}
+
+/* white theme */
+.white .container_whl {
+  background-color: rgb(250, 250, 250);
+  color: black;
+}
+
+.white .box_WHL {
+  color: black;
+}
+
+.white .clear_History_btn {
+  color: grey;
+}
+
+.white .rightSide_whl h1 {
+  color: black;
+}
+
+.white .leftside_whl {
+  background-color: rgb(230, 230, 230);
 }

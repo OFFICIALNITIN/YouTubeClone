@@ -75,9 +75,10 @@ function VideoPage() {
     }
     handleViews();
   }, []);
+  console.log(CurrentUser?.theme);
   return (
     <>
-      <div className="container_videoPage">
+      <div className={`container_videoPage ${CurrentUser?.theme}`}>
         <div className="container2_videopage">
           <div className="video_display_screen_videoPage">
             <VideoJS

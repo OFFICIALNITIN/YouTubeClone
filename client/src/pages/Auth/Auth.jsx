@@ -24,7 +24,10 @@ function Auth({ User, setAuthBtn, setEditCreateChannel }) {
     alert("Logged Out Successfully");
   };
   return (
-    <div className="Auth_container" onClick={() => setAuthBtn(false)}>
+    <div
+      className={`Auth_container ${CurrentUser?.theme}`}
+      onClick={() => setAuthBtn(false)}
+    >
       <div className="Auth_Container2">
         <p className="User_Details">
           <div className="Channel_logo_App">

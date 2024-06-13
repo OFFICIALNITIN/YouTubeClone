@@ -1,3 +1,4 @@
+/* Default (dark mode) styles */
 .container_leftSidebar {
   background-color: rgb(25, 25, 25);
   width: 4.8rem;
@@ -61,7 +62,6 @@
 }
 
 .subscriptions_lsdbar h3 {
-  /* text-decoration: underline; */
   margin: 20px 10px;
 }
 
@@ -90,4 +90,40 @@
 .container3_DrawerLeftSidebar {
   flex-grow: 1;
   background-color: rgba(0, 0, 0, 0.488);
+}
+
+/* white theme */
+.container_leftSidebar.white {
+  background-color: rgb(250, 250, 250);
+}
+
+.white .icon_sidebar_div {
+  color: black;
+}
+
+.white .icon_sidebar_div:hover,
+.white .icon_sidebar_div:active {
+  background-color: rgb(240, 240, 240);
+  color: black;
+}
+
+.white .container2_DrawerLeftSidebar {
+  background-color: rgb(250, 250, 250);
+}
+
+.white .Drawer_leftsidebar,
+.white .libraryBtn_Draweleftsidebar {
+  border-bottom: 2px solid rgba(192, 192, 192, 0.5);
+}
+
+.white .subscriptions_lsdbar {
+  color: black;
+}
+
+.white .channel_lsdbar p {
+  background-color: rgb(200, 200, 200);
+}
+
+.white .channel_lsdbar:hover {
+  color: rgb(0, 0, 128);
 }

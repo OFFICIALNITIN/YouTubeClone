@@ -6,10 +6,13 @@ import { MdOutlineVideoLibrary } from "react-icons/md";
 import shorts from "./shorts.png";
 import "./leftSidebar.css";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function LeftSidebar() {
+  const CurrentUser = useSelector((state) => state.currentUserReducer);
+
   return (
-    <div className="container_leftSidebar">
+    <div className={`container_leftSidebar ${CurrentUser?.theme}`}>
       <NavLink to={"/"} className="icon_sidebar_div">
         <AiOutlineHome size={22} className="icon_sidebar" />
         <div className="text_sidebar_icon">Home</div>
@@ -20,7 +23,7 @@ function LeftSidebar() {
       </NavLink>
       <NavLink to={""} className="icon_sidebar_div">
         <img src={shorts} width={22} alt="shorts" className="icon_sidebar" />
-        <div className="text_sidebar_icon">Explore</div>
+        <div className="text_sidebar_icon">shorts</div>
       </NavLink>
       <NavLink to={""} className="icon_sidebar_div">
         <MdOutlineSubscriptions size={22} className="icon_sidebar" />

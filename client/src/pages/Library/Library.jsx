@@ -15,7 +15,7 @@ function Library() {
   const historyList = useSelector((state) => state.HistoryReducer);
 
   return (
-    <div className="container_Pages_App">
+    <div className={`container_Pages_App ${CurrentUser?.theme}`}>
       <LeftSidebar />
       <div className="container2_Pages_App">
         <div className="container_libraryPage">

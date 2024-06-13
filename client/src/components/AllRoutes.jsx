@@ -9,6 +9,7 @@ import VideoPage from "../pages/VideoPage/VideoPage";
 import WatchLater from "../pages/WatchLater/WatchLater";
 import Channel from "../pages/Channel/Channel";
 import Search from "../pages/Search/Search";
+import Main from "../pages/Main/Main";
 
 function AllRoutes({ setEditCreateChannel, setVidUploadPage }) {
   return (
@@ -21,6 +22,7 @@ function AllRoutes({ setEditCreateChannel, setVidUploadPage }) {
       <Route path="/likedvideos" element={<LikeVideo />} />
       <Route path="/videopage/:vid" element={<VideoPage />} />
       <Route path="/search/:searchQuery" element={<Search />} />
+      <Route path="/maintenance" element={<Main />} />
       <Route
         path="/channel/:cid"
         element={

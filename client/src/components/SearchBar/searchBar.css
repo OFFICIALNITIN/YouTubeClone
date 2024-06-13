@@ -52,3 +52,23 @@
   color: whitesmoke;
   justify-content: center;
 }
+
+/* White Theme */
+
+.white .iBox_SearchBar {
+  background-color: rgb(250, 250, 250);
+  border: solid 1px rgba(70, 70, 70, 0.4);
+  color: black;
+}
+
+.white .searchIcon_searchBar {
+  background-color: rgb(250, 250, 250);
+  color: black;
+}
+
+.white .Mic_searchBar {
+  background-color: rgb(250, 250, 250);
+  color: black;
+  border: 1px solid black;
+  border-radius: 50%;
+}

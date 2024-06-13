@@ -1,3 +1,4 @@
+/* Default (dark mode) styles */
 .container_videoPage {
   height: calc(100vh - 3.4rem);
   overflow-y: auto;
@@ -86,4 +87,23 @@
 .moreVideoBar {
   width: calc(100vw - 4.5rem - 70vw);
   padding: 1rem 0rem;
+}
+
+/* white theme */
+.container_videoPage.white {
+  background-color: rgb(250, 250, 250);
+  color: black;
+}
+
+.white .video_ShowVideo_videoPage {
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgba(192, 192, 192, 0.2);
+}
+
+.white .channel_logo_videoPage {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.white .channel_logo_videoPage p {
+  color: black;
 }

@@ -1,3 +1,4 @@
+/* Default (dark mode) styles */
 .navigation_Home {
   color: white;
   background-color: rgb(37, 37, 37);
@@ -5,7 +6,7 @@
   display: flex;
   overflow-x: auto;
   top: 0;
-  border-bottom: 2px solid rgb(128, 128, 128, 0.27);
+  border-bottom: 2px solid rgba(128, 128, 128, 0.27);
 }
 
 .btn_nav_home {
@@ -18,4 +19,20 @@
 
 .btn_nav_home:hover {
   background-color: rgb(128, 128, 128);
+}
+
+/* White theme styles */
+.navigation_Home.white {
+  color: white;
+  background-color: rgb(250, 250, 250) !important;
+  border-bottom: 2px solid rgba(192, 192, 192, 0.5);
+}
+
+.btn_nav_home.white {
+  background-color: rgb(240, 240, 240);
+  color: black;
+}
+
+.btn_nav_home:hover.white {
+  background-color: rgb(192, 192, 192);
 }

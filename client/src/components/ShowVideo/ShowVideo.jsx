@@ -2,8 +2,11 @@ import React from "react";
 import "./showVideo.css";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 function ShowVideo({ vid }) {
+  const CurrentUser = useSelector((state) => state.currentUserReducer);
+
   return (
     <>
       <Link to={`/videopage/${vid?._id}`}>
@@ -12,7 +15,7 @@ function ShowVideo({ vid }) {
           className="video_ShowVideo"
         />
       </Link>
-      <div className="video_description">
+      <div className={`video_description ${CurrentUser?.theme}`}>
         <div className="Channel_logo_App">
           <div className="fstChar_logo_App">
             <>{vid?.uploader?.charAt(0).toUpperCase()}</>

@@ -35,7 +35,8 @@ function Home() {
   //     description: "description of video 3",
   //   },
   // ];
-
+  const CurrentUser = useSelector((state) => state.currentUserReducer);
+  console.log(CurrentUser);
   const NavList = [
     "All",
     "Python",
@@ -48,10 +49,10 @@ function Home() {
     "Comedy",
   ];
   return (
-    <div className="container_Pages_App">
+    <div className={`container_Pages_App ${CurrentUser?.theme}`}>
       <LeftSidebar />
       <div className="container2_Pages_App">
-        <div className="navigation_Home">
+        <div className={`navigation_Home ${CurrentUser?.theme}`}>
           {NavList.map((m) => {
             return (
               <p key={m} className="btn_nav_home">

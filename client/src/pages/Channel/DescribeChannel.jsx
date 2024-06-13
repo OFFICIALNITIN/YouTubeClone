@@ -20,7 +20,7 @@ const DescribeChannel = ({ setEditCreateChannel, cid, setVidUploadPage }) => {
   console.log(Points);
 
   return (
-    <div className="container3_channel">
+    <div className={`container3_channel ${CurrentUser?.theme}`}>
       <div className="channel_logo_channel">
         <b>{currentChannel?.name.charAt(0).toUpperCase()}</b>
       </div>

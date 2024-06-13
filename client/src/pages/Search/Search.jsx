@@ -11,11 +11,12 @@ function Search() {
       q?.videoTitle.toUpperCase().includes(searchQuery.toUpperCase())
     )
     .reverse();
+  const CurrentUser = useSelector((state) => state.currentUserReducer);
   return (
-    <div className="container_Pages_App">
+    <div className={`container_Pages_App ${CurrentUser?.theme}`}>
       <LeftSidebar />
       <div className="container2_Pages_App">
-        <h2 style={{ color: "white" }}>Search Results for {searchQuery}...</h2>
+        <h2>Search Results for {searchQuery}...</h2>
         <ShowVideoGrid Videos={Videos} />
       </div>
     </div>

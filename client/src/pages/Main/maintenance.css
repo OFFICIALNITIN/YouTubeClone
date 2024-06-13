@@ -1,0 +1,14 @@
+.main-body {
+  color: white;
+  background-color: rgb(37, 37, 37);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-body h1 {
+  padding: 0;
+  margin: 0;
+}

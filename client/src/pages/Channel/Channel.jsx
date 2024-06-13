@@ -13,7 +13,7 @@ function Channel({ setEditCreateChannel, setVidUploadPage }) {
     ?.data?.filter((q) => q?.videoChannel === cid)
     .reverse();
   return (
-    <div className="container_Pages_App">
+    <div className="container_Pages_App white">
       <LeftSidebar />
       <div className="container2_Pages_App">
         <DescribeChannel

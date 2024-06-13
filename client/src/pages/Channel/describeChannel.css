@@ -1,3 +1,4 @@
+/* Default (dark mode) styles */
 .container3_channel {
   border-bottom: 3px solid rgba(1, 26, 96, 0.692);
   padding: 0.5rem;
@@ -19,6 +20,7 @@
   margin: auto;
   font-size: 3rem;
 }
+
 .description_channel {
   text-align: center;
 }
@@ -56,6 +58,42 @@
 
 .uploadbtn_channel:hover,
 .editbtn_channel:hover {
+  border: 2px solid;
+  color: rgb(231, 140, 14);
+}
+
+/* White theme */
+.container3_channel.white {
+  border-bottom: 3px solid rgba(1, 26, 96, 0.692);
+  padding: 0.5rem;
+  color: black;
+}
+
+.white .channel_logo_channel {
+  border: 10px solid rgba(49, 7, 219, 0.66);
+  background-color: rgba(92, 135, 4, 0.769);
+}
+
+.white .description_channel {
+  color: black;
+}
+
+.white .description_channel b {
+  font-size: 4rem;
+}
+
+.white .description_channel p {
+  font-size: large;
+}
+
+.white .uploadbtn_channel,
+.white .editbtn_channel {
+  background-color: blue;
+  color: white;
+}
+
+.white .uploadbtn_channel:hover,
+.white .editbtn_channel:hover {
   border: 2px solid;
   color: rgb(231, 140, 14);
 }

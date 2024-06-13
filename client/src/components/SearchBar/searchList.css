@@ -21,3 +21,11 @@
 .titleIcon {
   margin: 0.3rem;
 }
+
+.Container_SearchList.white {
+  background-color: rgb(250, 250, 250);
+}
+
+.white .titleItem {
+  color: black;
+}

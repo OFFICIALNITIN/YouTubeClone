@@ -10,10 +10,16 @@ import { FaHistory } from "react-icons/fa";
 
 import shorts from "./shorts.png";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function DrawerSidebar({ toggleDrawer, toggleDrawerSidebar }) {
+  const CurrentUser = useSelector((state) => state.currentUserReducer);
+
   return (
-    <div className="container_DrawerLeftSidebar" style={toggleDrawerSidebar}>
+    <div
+      className={`container_DrawerLeftSidebar  ${CurrentUser?.theme}`}
+      style={toggleDrawerSidebar}
+    >
       <div className="container2_DrawerLeftSidebar">
         <div className="Drawer_leftsidebar">
           <NavLink to={"/"} className="icon_sidebar_div">

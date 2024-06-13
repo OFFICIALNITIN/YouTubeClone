@@ -20,7 +20,7 @@ function WHL({ page, likedVideoList }) {
     }
   };
   return (
-    <div className="container_Pages_App">
+    <div className={`container_Pages_App ${CurrentUser?.theme}`}>
       <LeftSidebar />
       <div className="container2_Pages_App">
         <p className="container_whl">

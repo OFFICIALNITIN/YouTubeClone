@@ -44,3 +44,14 @@
   background-color: white;
   margin: auto 6px;
 }
+
+.white .title_vid_ShowVideo {
+  color: black !important;
+}
+.white .vid_views_UploadTime {
+  color: black;
+}
+
+.white .dot {
+  background-color: black;
+}

@@ -46,7 +46,7 @@ function Navbar({ toggleDrawer, setEditCreateChannel }) {
   });
   return (
     <>
-      <div className="Container_Navbar">
+      <div className={`Container_Navbar ${CurrentUser?.theme}`}>
         <div className="Burger_Logo_Navbar">
           <div className="burger" onClick={() => toggleDrawer()}>
             <p></p>

@@ -17,9 +17,11 @@ function SearchBar() {
   // const TitleArray = ["video1", "video2", "Animation Video", "Movie"].filter(
   //   (q) => q.toUpperCase().includes(searchQuery.toUpperCase())
   // );
+  const CurrentUser = useSelector((state) => state.currentUserReducer);
+
   return (
     <>
-      <div className="SearchBar_Container">
+      <div className={`SearchBar_Container ${CurrentUser?.theme}`}>
         <div className="SearchBar_Container2">
           <div className="search_div">
             <input

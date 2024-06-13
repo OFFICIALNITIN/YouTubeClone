@@ -34,7 +34,7 @@ function CreateEditChannel({ setEditCreateChannel }) {
     }
   };
   return (
-    <div className="container_createEditChannel">
+    <div className={`container_createEditChannel ${CurrentUser?.theme}`}>
       <input
         type="submit"
         name="text"
