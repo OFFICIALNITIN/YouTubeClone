@@ -30,7 +30,7 @@ function Navbar({ toggleDrawer, setEditCreateChannel }) {
       );
       const Profile = await res.json();
       const Email = Profile.email;
-      dispatch(login({ email: Email }));
+      dispatch(login({ email: Email, phone: "" }));
     } catch (error) {
       console.log(error);
     }

@@ -65,3 +65,6 @@ export const watchVideo = (userId, videoId) =>
   API.post("/video/watch-video", { userId, videoId });
 
 export const points = (userId) => API.get(`/video/points/${userId}`);
+
+export const verify = (email, otp) =>
+  API.post("/user/verify-otp", { email, otp });

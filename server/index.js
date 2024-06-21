@@ -27,6 +27,7 @@ app.use(
 //   res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
 //   next();
 // });
+
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use("/upload", express.static(path.join("upload")));

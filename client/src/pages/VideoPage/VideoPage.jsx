@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { addToHistory } from "../../actions/History";
 import { viewVideo, watchVideo } from "../../actions/video";
 import VideoJS from "../../components/VideoJS";
+import CustomVideoPlayer from "../../components/CustomVideoPlayer/CustomVideoPlayer";
 
 function VideoPage() {
   const dispatch = useDispatch();
@@ -81,11 +82,12 @@ function VideoPage() {
       <div className={`container_videoPage ${CurrentUser?.theme}`}>
         <div className="container2_videopage">
           <div className="video_display_screen_videoPage">
-            <VideoJS
+            <CustomVideoPlayer src={`http://localhost:8000/${vv?.filePath}`} />
+            {/* <VideoJS
               options={videoJsOptions}
               onReady={handlePlayerReady}
               className={"video_ShowVideo_videoPage"}
-            />
+            /> */}
             {/* <video
               src={`http://localhost:8000/${vv?.filePath}`}
               className={"video_ShowVideo_videoPage"}

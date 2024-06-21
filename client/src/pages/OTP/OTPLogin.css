@@ -1,0 +1,63 @@
+.otp {
+  top: 30%;
+  left: 35%;
+  right: 30%;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  width: auto;
+  height: auto;
+  border-radius: 30px;
+}
+
+.otp-container {
+  background-color: white;
+  width: 500px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.otp-container input {
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid gray;
+}
+
+.otp-container input:focus {
+  outline: none;
+}
+
+.otp-container button {
+  padding: 10px 15px;
+  margin: 5px 0px;
+  border: none;
+  background-color: gray;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.otp-container button:hover {
+  background-color: aliceblue;
+  color: gray;
+}
+.otp-title {
+  padding: 1px;
+  margin: 1px;
+  font-weight: bold;
+}
+
+.output {
+  color: rgb(20, 167, 20);
+  font-weight: bold;
+}

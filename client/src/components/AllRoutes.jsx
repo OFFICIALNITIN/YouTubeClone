@@ -10,6 +10,7 @@ import WatchLater from "../pages/WatchLater/WatchLater";
 import Channel from "../pages/Channel/Channel";
 import Search from "../pages/Search/Search";
 import Main from "../pages/Main/Main";
+import OTPLogin from "../pages/OTP/OTPLogin";
 
 function AllRoutes({ setEditCreateChannel, setVidUploadPage }) {
   return (
@@ -22,7 +23,7 @@ function AllRoutes({ setEditCreateChannel, setVidUploadPage }) {
       <Route path="/likedvideos" element={<LikeVideo />} />
       <Route path="/videopage/:vid" element={<VideoPage />} />
       <Route path="/search/:searchQuery" element={<Search />} />
-      <Route path="/maintenance" element={<Main />} />
+      <Route path="/otp-verify" element={<OTPLogin />} />
       <Route
         path="/channel/:cid"
         element={

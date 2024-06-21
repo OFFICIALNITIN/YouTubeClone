@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import LeftSidebar from "../../components/LeftSideBar/LeftSidebar";
 import ShowVideoGrid from "../../components/ShowVideoGrid/ShowVideoGrid";
 import vid from "../../components/Videos/vid.mp4";
 import { useSelector } from "react-redux";
 import "./home.css";
+import OTPLogin from "../OTP/OTPLogin";
 
 function Home() {
   const Videos = useSelector((state) => state.videoReducer)
@@ -36,6 +37,7 @@ function Home() {
   //   },
   // ];
   const CurrentUser = useSelector((state) => state.currentUserReducer);
+  const [verified, setVerified] = useState(false);
   console.log(CurrentUser);
   const NavList = [
     "All",
@@ -61,6 +63,15 @@ function Home() {
             );
           })}
         </div>
+        {CurrentUser && !verified && (
+          <OTPLogin
+            email={CurrentUser?.result?.email}
+            otpMethod={CurrentUser?.otpMethod}
+            setVerified={setVerified}
+            message={CurrentUser?.message}
+          />
+        )}
+
         <ShowVideoGrid Videos={Videos} />
       </div>
     </div>

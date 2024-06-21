@@ -3,6 +3,23 @@ import { setCurrentUser } from "./currentUser";
 
 export const login = (authData) => async (dispatch) => {
   try {
+    // Check if the location is not in South India
+    const isSouthIndia = [
+      "Tamil Nadu",
+      "Kerala",
+      "Karnataka",
+      "Andhra Pradesh",
+      "Telangana",
+    ].includes(authData.location);
+
+    if (!isSouthIndia) {
+      const phone = prompt("Please enter your mobile number:");
+      if (!phone) {
+        alert("Mobile number is required for OTP verification.");
+        return;
+      }
+      authData.phone = phone;
+    }
     const res = await api.login(authData);
     console.log(res);
     const data = res.data;
@@ -12,3 +29,15 @@ export const login = (authData) => async (dispatch) => {
     alert(error);
   }
 };
+
+// export const verify = (otpData) => async (dispatch) => {
+//   const { email, otp } = otpData;
+//   try {
+//     const res = await api.verify(email, otp);
+//     const data = res.data.message;
+//     console.log(data);
+//     dispatch({ type: "VERIFY", data });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
