@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOut, BiVideo } from "react-icons/bi";
 import { googleLogout } from "@react-oauth/google";
 import { useDispatch, useSelector } from "react-redux";
 import "./Auth.css";
@@ -64,6 +64,11 @@ function Auth({ User, setAuthBtn, setEditCreateChannel }) {
               />
             </>
           )}
+
+          <Link to="/video-call" className="btn_Auth">
+            <BiVideo />
+            Video Call
+          </Link>
 
           <div onClick={logout} className="btn_Auth">
             <BiLogOut />

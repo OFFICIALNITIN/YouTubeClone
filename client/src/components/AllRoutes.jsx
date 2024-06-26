@@ -11,6 +11,7 @@ import Channel from "../pages/Channel/Channel";
 import Search from "../pages/Search/Search";
 import Main from "../pages/Main/Main";
 import OTPLogin from "../pages/OTP/OTPLogin";
+import VideoCallPage from "../pages/VideoCall/VideoCallPage";
 
 function AllRoutes({ setEditCreateChannel, setVidUploadPage }) {
   return (
@@ -24,6 +25,7 @@ function AllRoutes({ setEditCreateChannel, setVidUploadPage }) {
       <Route path="/videopage/:vid" element={<VideoPage />} />
       <Route path="/search/:searchQuery" element={<Search />} />
       <Route path="/otp-verify" element={<OTPLogin />} />
+      <Route path="/video-call" element={<VideoCallPage />} />
       <Route
         path="/channel/:cid"
         element={

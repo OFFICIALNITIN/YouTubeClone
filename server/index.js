@@ -7,11 +7,20 @@ import videoRoutes from "./routes/video.js";
 import commentRoutes from "./routes/comment.js";
 import bodyParser from "body-parser";
 import path from "path";
+import { Server } from "socket.io";
+import http from "http";
 import helmet from "helmet";
 
 dotenv.config();
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    method: ["GET", "POST"],
+  },
+});
 const PORT = process.env.PORT;
 
 app.use(
@@ -40,7 +49,24 @@ app.use("/comment", commentRoutes);
 // app.get("/", (req, res) => {
 //   res.send("Hello from server");
 // });
-app.listen(PORT, () => {
+
+io.on("connection", (socket) => {
+  socket.emit("me", socket.id);
+
+  socket.on("disconnect", () => {
+    socket.broadcast.emit("callended");
+  });
+
+  socket.on("calluser", ({ userToCall, signalData, from, name }) => {
+    io.to(userToCall).emit("calluser", { signal: signalData, from, name });
+  });
+
+  socket.on("answercall", (data) => {
+    io.to(data.to).emit("callaccepted", data.signal);
+  });
+});
+
+server.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 

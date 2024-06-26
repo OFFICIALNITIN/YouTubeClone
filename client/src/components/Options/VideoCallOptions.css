@@ -1,0 +1,110 @@
+.options-container {
+  height: 25vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.main-container .form {
+  width: 60vw;
+  height: 30vh;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgb(95, 94, 94);
+  border: 2px solid white;
+}
+
+.part-1 {
+  width: 200px;
+
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.part-1 input {
+  height: 25px;
+  border: none;
+  background: transparent;
+
+  border-bottom: white 3px solid;
+  color: white;
+}
+
+.part-1 input:focus {
+  outline: none;
+  background: transparent;
+}
+
+.part-1 button {
+  border: none;
+  border-radius: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+}
+
+.part-1 button:hover {
+  background-color: rgba(247, 247, 247, 0.486);
+}
+
+.part-2 {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 10px;
+}
+
+.part-2 input {
+  height: 25px;
+  border: none;
+  background: transparent;
+
+  border-bottom: white 3px solid;
+  color: white;
+}
+
+.part-2 input:focus {
+  outline: none;
+  background: transparent;
+}
+
+.part-2 button {
+  border: none;
+  border-radius: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.part-2 button:hover {
+  background-color: rgba(247, 247, 247, 0.486);
+}
+
+.noti-content {
+  color: white;
+  font-size: 15px;
+}
+
+.noti-content button {
+  padding: 5px 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  background-color: green;
+}
