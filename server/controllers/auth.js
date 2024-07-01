@@ -28,9 +28,8 @@ export const login = async (req, res) => {
   console.log(location);
 
   // console.log(email);
+  const existingUser = await users.findOne({ email });
   try {
-    const existingUser = await users.findOne({ email });
-
     if (!existingUser) {
       try {
         const newUser = await users.create({ email });
