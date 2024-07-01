@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   joinedOn: { type: Date, default: Date.now },
   points: { type: Number, default: 0 },
   location: { type: String, required: true },
+  verified: { type: Boolean, default: false },
 });
 
 export default mongoose.model("User", userSchema);

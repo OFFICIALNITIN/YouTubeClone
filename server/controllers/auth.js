@@ -124,6 +124,7 @@ const sendOTP = async (email, otp, locaton, existingUser, phone) => {
     "Karnataka",
     "Andhra Pradesh",
     "Telangana",
+    "California",
   ].includes(locaton);
 
   //OTP method determination
@@ -179,7 +180,15 @@ export const verifyOTP = async (req, res) => {
     // Verify OTP
     if (parseInt(otp) === cachedOTP) {
       //Generate JWT Token
-      const user = await users.findOne({ email });
+      const user = await users.findOne(
+        { email },
+        {
+          $set: { verified: true },
+        },
+        {
+          new: true,
+        }
+      );
 
       const token = jwt.sign(
         { email: user.email, id: user._id },

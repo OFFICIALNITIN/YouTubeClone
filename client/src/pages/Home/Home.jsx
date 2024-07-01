@@ -63,7 +63,7 @@ function Home() {
             );
           })}
         </div>
-        {CurrentUser && !verified && (
+        {CurrentUser && !CurrentUser?.verified && (
           <OTPLogin
             email={CurrentUser?.result?.email}
             otpMethod={CurrentUser?.otpMethod}

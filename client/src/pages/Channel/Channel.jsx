@@ -8,12 +8,13 @@ import { useSelector } from "react-redux";
 
 function Channel({ setEditCreateChannel, setVidUploadPage }) {
   const { cid } = useParams();
+  const CurrentUser = useSelector((state) => state.currentUserReducer);
 
   const Videos = useSelector((state) => state.videoReducer)
     ?.data?.filter((q) => q?.videoChannel === cid)
     .reverse();
   return (
-    <div className="container_Pages_App white">
+    <div className={`container_Pages_App ${CurrentUser?.theme}`}>
       <LeftSidebar />
       <div className="container2_Pages_App">
         <DescribeChannel

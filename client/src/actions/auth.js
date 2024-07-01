@@ -10,6 +10,7 @@ export const login = (authData) => async (dispatch) => {
       "Karnataka",
       "Andhra Pradesh",
       "Telangana",
+      "California",
     ].includes(authData.location);
 
     if (!isSouthIndia) {

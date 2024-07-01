@@ -8,8 +8,19 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { SocketContext } from "../../context/SocketContext";
 
 const VideoCallOptions = ({ children }) => {
-  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
-    useContext(SocketContext);
+  const {
+    me,
+    callAccepted,
+    name,
+    setName,
+    callEnded,
+    leaveCall,
+    callUser,
+    startRecordingUserVideo,
+    stopRecordingUserVideo,
+    startScreenShare,
+    stopScreenShare,
+  } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState("");
   return (
     <div className="options-container">
@@ -45,6 +56,12 @@ const VideoCallOptions = ({ children }) => {
                 <LocalPhoneIcon /> Call
               </button>
             )}
+          </div>
+          <div className="part-3">
+            <button onClick={startRecordingUserVideo}>Start Recording</button>
+            <button onClick={stopRecordingUserVideo}>Stop Recording</button>
+            <button onClick={startScreenShare}>Screen Share</button>
+            <button onClick={stopScreenShare}> Stop Screen Share</button>
           </div>
           {children}
         </div>

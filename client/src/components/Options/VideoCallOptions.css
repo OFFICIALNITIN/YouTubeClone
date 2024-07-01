@@ -9,7 +9,7 @@
 }
 
 .main-container .form {
-  width: 60vw;
+  width: 70vw;
   height: 30vh;
   border-radius: 20px;
   display: flex;
@@ -96,6 +96,23 @@
   background-color: rgba(247, 247, 247, 0.486);
 }
 
+.part-3 button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  margin: 10px 0px;
+  font-weight: bold;
+}
+
+.part-3 button:hover {
+  background-color: rgba(247, 247, 247, 0.486);
+}
+
 .noti-content {
   color: white;
   font-size: 15px;
@@ -106,5 +123,6 @@
   border: 2px solid white;
   border-radius: 10px;
   color: white;
+
   background-color: green;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BiLogOut, BiVideo } from "react-icons/bi";
 import { googleLogout } from "@react-oauth/google";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,11 +10,24 @@ import { getUserPoints } from "../../actions/points.js";
 function Auth({ User, setAuthBtn, setEditCreateChannel }) {
   const Points = useSelector((state) => state.pointsReducer);
   const CurrentUser = useSelector((state) => state.currentUserReducer);
+  const [isCallAllowed, setIsCallAllowed] = useState(false);
 
   useEffect(() => {
     if (CurrentUser?.result._id) {
       dispatch(getUserPoints({ userId: CurrentUser?.result._id }));
     }
+
+    const checkTime = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      if (hours > 18 && hours < 24) {
+        setIsCallAllowed(true);
+      } else {
+        setIsCallAllowed(false);
+      }
+    };
+
+    checkTime();
   }, []);
 
   const dispatch = useDispatch();
@@ -64,11 +77,12 @@ function Auth({ User, setAuthBtn, setEditCreateChannel }) {
               />
             </>
           )}
-
-          <Link to="/video-call" className="btn_Auth">
-            <BiVideo />
-            Video Call
-          </Link>
+          {isCallAllowed && (
+            <Link to="/video-call" className="btn_Auth">
+              <BiVideo />
+              Video Call
+            </Link>
+          )}
 
           <div onClick={logout} className="btn_Auth">
             <BiLogOut />
