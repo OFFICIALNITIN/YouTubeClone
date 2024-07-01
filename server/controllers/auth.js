@@ -60,7 +60,7 @@ export const login = async (req, res) => {
           message: `${otpMethod.toUpperCase()} OTP sent successfully`,
         });
       } catch (error) {
-        res.status(500).json({ mess: "Something wents wrong..." });
+        res.status(500).json({ mess: error });
       }
     } else {
       const token = jwt.sign(
