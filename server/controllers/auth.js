@@ -28,11 +28,13 @@ export const login = async (req, res) => {
   console.log(location);
 
   // console.log(email);
-  const existingUser = await users.findOne({ email });
+
   try {
+    const existingUser = await users.findOne({ email });
+
     if (!existingUser) {
       try {
-        const newUser = await users.create({ email });
+        const newUser = await users.create({ email, location });
 
         const token = jwt.sign(
           { email: newUser.email, id: newUser._id },
@@ -179,7 +181,7 @@ export const verifyOTP = async (req, res) => {
     // Verify OTP
     if (parseInt(otp) === cachedOTP) {
       //Generate JWT Token
-      const user = await users.findOne(
+      const user = await users.findOneAndUpdate(
         { email },
         {
           $set: { verified: true },
@@ -195,7 +197,9 @@ export const verifyOTP = async (req, res) => {
         { expiresIn: "1h" }
       );
 
-      res.status(200).json({ message: "OTP verified successfully", token });
+      res
+        .status(200)
+        .json({ message: "OTP verified successfully", token, user });
       console.log("OTP verified");
     } else {
       res.status(403).json({ message: "Invalid OTP" });

@@ -21,11 +21,14 @@ const OTPLogin = ({ email, otpMethod, setVerified, message }) => {
     try {
       console.log(email, otp);
       const res = await api.verify(email, otp);
+      const checkVerified = res.data.user.verified;
       const data = res.data.message;
       setOtpData(data);
-      setTimeout(() => {
-        setVerified(true);
-      }, 1000);
+      if (checkVerified === true) {
+        setTimeout(() => {
+          setVerified(true);
+        }, 1000);
+      }
     } catch (error) {
       console.log(error);
     }

@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   desc: { type: String },
   joinedOn: { type: Date, default: Date.now },
   points: { type: Number, default: 0 },
-  location: { type: String, required: true },
+  location: { type: String, required: false },
   verified: { type: Boolean, default: false },
 });
 
