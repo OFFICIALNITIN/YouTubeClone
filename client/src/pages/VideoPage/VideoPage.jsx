@@ -82,7 +82,9 @@ function VideoPage() {
       <div className={`container_videoPage ${CurrentUser?.theme}`}>
         <div className="container2_videopage">
           <div className="video_display_screen_videoPage">
-            <CustomVideoPlayer src={`http://localhost:8000/${vv?.filePath}`} />
+            <CustomVideoPlayer
+              src={`https://youtubeclone-l7cv.onrender.com/${vv?.filePath}`}
+            />
             {/* <VideoJS
               options={videoJsOptions}
               onReady={handlePlayerReady}
