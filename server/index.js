@@ -7,8 +7,6 @@ import videoRoutes from "./routes/video.js";
 import commentRoutes from "./routes/comment.js";
 import bodyParser from "body-parser";
 import path from "path";
-import fs from "fs";
-import { fileURLToPath } from "url";
 import { Server } from "socket.io";
 import http from "http";
 import helmet from "helmet";
@@ -25,16 +23,6 @@ const io = new Server(server, {
 });
 const PORT = process.env.PORT;
 
-// Get the current directory name
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Ensure the upload directory exists
-const uploadDir = path.join(__dirname, "upload");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
-
 app.use(
   cors({
     origin: "https://devcloneyoutube.vercel.app",
@@ -46,13 +34,14 @@ app.use(helmet());
 app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
   res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
-  res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+  res.setHeader("Cross-Origin-Resource-Policy", "same-site");
+
   next();
 });
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use("/upload", express.static(uploadDir));
+app.use("/upload", express.static(path.join("upload")));
 app.use(bodyParser.json());
 
 app.use("/user", userRoutes);
