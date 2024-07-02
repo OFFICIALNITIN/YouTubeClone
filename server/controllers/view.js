@@ -16,6 +16,6 @@ export const viewController = async (req, res) => {
     });
     res.status(200).json(updateView);
   } catch (error) {
-    res.status(400).json("error:", error);
+    res.status(400).json(error);
   }
 };
