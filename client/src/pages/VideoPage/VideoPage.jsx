@@ -30,7 +30,7 @@ function VideoPage() {
     fluid: true,
     sources: [
       {
-        src: `https://youtubeclone-server-ozrg.onrender.com/${vv?.filePath}`,
+        src: `http://localhost:8000/${vv?.filePath}`,
         type: "video/mp4",
       },
     ],
@@ -83,7 +83,7 @@ function VideoPage() {
         <div className="container2_videopage">
           <div className="video_display_screen_videoPage">
             <CustomVideoPlayer
-              src={`https://youtubeclone-l7cv.onrender.com/${vv?.filePath}`}
+              src={`https://youtubeclone-server-ozrg.onrender.com/${vv?.filePath}`}
             />
             {/* <VideoJS
               options={videoJsOptions}

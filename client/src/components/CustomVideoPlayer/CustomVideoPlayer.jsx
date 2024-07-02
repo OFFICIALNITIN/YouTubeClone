@@ -32,7 +32,7 @@ const CustomVideoPlayer = ({ src }) => {
   const Videos = useSelector((state) => state.videoReducer);
   const vv = Videos?.data.find((q) => q._id === vid);
   const commentList = useSelector((state) => state.commentReducer);
-  console.log(commentList);
+  console.log(Videos);
 
   useEffect(() => {
     const video = videoRef.current;
