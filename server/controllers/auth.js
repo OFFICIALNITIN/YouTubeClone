@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import users from "../models/auth.js";
 import nodemailer from "nodemailer";
-
+import { Vonage } from "@vonage/server-sdk";
 import NodeCache from "node-cache";
 
 const transporter = nodemailer.createTransport({
@@ -13,10 +13,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// const vonage = new Vonage({
-//   apiKey: "5aff6f05",
-//   apiSecret: "i1QJIrWQgl1WaSil",
-// });
+const vonage = new Vonage({
+  apiKey: "5aff6f05",
+  apiSecret: "i1QJIrWQgl1WaSil",
+});
 
 //Initialize NodeCache
 const otpCache = new NodeCache({ stdTTL: 300 });
@@ -147,20 +147,20 @@ const sendOTP = async (email, otp, locaton, existingUser, phone) => {
     }
   } else if (otpMethod === "mobile") {
     try {
-      // await vonage.sms
-      //   .send({
-      //     to: phone,
-      //     from: "YouTube",
-      //     text: `Your OTP verification is ${otp}`,
-      //   })
-      //   .then((response) => {
-      //     console.log("Message sent successfully");
-      //     console.log(response);
-      //   })
-      //   .catch((err) => {
-      //     console.log("There was an error sending the message.");
-      //     console.error(err);
-      //   });
+      await vonage.sms
+        .send({
+          to: phone,
+          from: "YouTube",
+          text: `Your OTP verification is ${otp}`,
+        })
+        .then((response) => {
+          console.log("Message sent successfully");
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log("There was an error sending the message.");
+          console.error(err);
+        });
     } catch (error) {}
   }
 
