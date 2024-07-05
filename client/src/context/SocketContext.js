@@ -4,7 +4,7 @@ import { createContext, useEffect, useRef, useState } from "react";
 
 const SocketContext = createContext();
 
-const socket = io("hhttps://youtubeclone-server-ozrg.onrender.com");
+const socket = io("https://youtubeclone-server-ozrg.onrender.com");
 
 const ContextProvider = ({ children }) => {
   const [stream, setStream] = useState(null);

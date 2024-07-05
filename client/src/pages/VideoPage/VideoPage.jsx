@@ -12,6 +12,7 @@ import { addToHistory } from "../../actions/History";
 import { viewVideo, watchVideo } from "../../actions/video";
 import VideoJS from "../../components/VideoJS";
 import CustomVideoPlayer from "../../components/CustomVideoPlayer/CustomVideoPlayer";
+import { getUserPoints } from "../../actions/points";
 
 function VideoPage() {
   const dispatch = useDispatch();
@@ -47,11 +48,7 @@ function VideoPage() {
     player.on("dispose", () => {
       videojs.log("player will dispose");
     });
-    player.on("ended", () => {
-      if (CurrentUser) {
-        dispatch(watchVideo({ userId: CurrentUser?.result._id, videoId: vid }));
-      }
-    });
+    player.on("ended", () => {});
   };
 
   const handeHistory = () => {
@@ -76,6 +73,12 @@ function VideoPage() {
     }
     handleViews();
   }, []);
+
+  useEffect(() => {
+    if (CurrentUser) {
+      dispatch(watchVideo({ userId: CurrentUser?.result._id, videoId: vid }));
+    }
+  }, [CurrentUser, dispatch, vid]);
 
   return (
     <>
