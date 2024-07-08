@@ -41,6 +41,18 @@ function AllRoutes({ setEditCreateChannel, setVidUploadPage }) {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/videopage/:vid" element={<VideoPage />} />
+      <Route path="/search/:searchQuery" element={<Search />} />
+      <Route path="/otp-verify" element={<OTPLogin />} />
+      <Route
+        path="/channel/:cid"
+        element={
+          <Channel
+            setVidUploadPage={setVidUploadPage}
+            setEditCreateChannel={setEditCreateChannel}
+          />
+        }
+      />
       {CurrentUser ? (
         <>
           <Route path="/library" element={<Library />} />
@@ -48,24 +60,11 @@ function AllRoutes({ setEditCreateChannel, setVidUploadPage }) {
           <Route path="/history" element={<WatchHistory />} />
           <Route path="/watchlater" element={<WatchLater />} />
           <Route path="/likedvideos" element={<LikeVideo />} />
-          <Route path="/videopage/:vid" element={<VideoPage />} />
-          <Route path="/search/:searchQuery" element={<Search />} />
-          <Route path="/otp-verify" element={<OTPLogin />} />
           {isCallAllowed ? (
             <Route path="/video-call" element={<VideoCallPage />} />
           ) : (
             <Route path="/video-call" element={<Navigate to="/" />} />
           )}
-
-          <Route
-            path="/channel/:cid"
-            element={
-              <Channel
-                setVidUploadPage={setVidUploadPage}
-                setEditCreateChannel={setEditCreateChannel}
-              />
-            }
-          />
         </>
       ) : (
         <>
