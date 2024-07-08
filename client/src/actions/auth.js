@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
 import * as api from "../api";
 import { setCurrentUser } from "./currentUser";
 
 export const login = (authData) => async (dispatch) => {
+  const item = JSON.parse(localStorage.getItem("Profile"));
   try {
     // Check if the location is not in South India
     const isSouthIndia = [
@@ -14,8 +14,8 @@ export const login = (authData) => async (dispatch) => {
       "California",
     ].includes(authData.location);
 
-    if (!isSouthIndia) {
-      const phone = prompt("Please enter your mobile number:");
+    if (!isSouthIndia && !item.result.verified) {
+      const phone = prompt("Please enter your mobile number include(91):");
       if (!phone) {
         alert("Mobile number is required for OTP verification.");
         return;

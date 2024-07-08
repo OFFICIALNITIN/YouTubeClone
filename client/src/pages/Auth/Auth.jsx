@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BiLogOut, BiVideo } from "react-icons/bi";
 import { googleLogout } from "@react-oauth/google";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,11 +6,13 @@ import "./Auth.css";
 import { setCurrentUser } from "../../actions/currentUser";
 import { Link } from "react-router-dom";
 import { getUserPoints } from "../../actions/points.js";
+import { SocketContext } from "../../context/SocketContext.js";
 
 function Auth({ User, setAuthBtn, setEditCreateChannel }) {
   const Points = useSelector((state) => state.pointsReducer);
   const CurrentUser = useSelector((state) => state.currentUserReducer);
   const [isCallAllowed, setIsCallAllowed] = useState(false);
+  const { videoCallOn, setVideoCallOn } = useContext(SocketContext);
 
   useEffect(() => {
     if (CurrentUser?.result._id) {
@@ -20,7 +22,7 @@ function Auth({ User, setAuthBtn, setEditCreateChannel }) {
     const checkTime = () => {
       const now = new Date();
       const hours = now.getHours();
-      if (hours > 18 && hours < 24) {
+      if (hours > 17 && hours < 24) {
         setIsCallAllowed(true);
       } else {
         setIsCallAllowed(false);
@@ -35,6 +37,10 @@ function Auth({ User, setAuthBtn, setEditCreateChannel }) {
     googleLogout();
     dispatch(setCurrentUser(null));
     alert("Logged Out Successfully");
+  };
+
+  const OnVideo = () => {
+    setVideoCallOn(true);
   };
   return (
     <div
@@ -78,7 +84,7 @@ function Auth({ User, setAuthBtn, setEditCreateChannel }) {
             </>
           )}
           {isCallAllowed && (
-            <Link to="/video-call" className="btn_Auth">
+            <Link to="/video-call" className="btn_Auth" onClick={OnVideo}>
               <BiVideo />
               Video Call
             </Link>

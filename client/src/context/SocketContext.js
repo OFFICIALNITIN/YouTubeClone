@@ -15,8 +15,7 @@ const ContextProvider = ({ children }) => {
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState("");
   const [recording, setRecording] = useState(false);
-  const [mySocketId, setMySocketId] = useState("");
-  const [userToCall, setUserToCall] = useState(""); // Store the ID of the user to call
+  const [videoCallOn, setVideoCallOn] = useState(false);
 
   const myVideo = useRef(null);
   const userVideo = useRef(null);
@@ -24,21 +23,23 @@ const ContextProvider = ({ children }) => {
   const userMediaRecorder = useRef(null);
 
   useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
-      .then((currentStream) => {
-        setStream(currentStream);
-        if (myVideo.current) {
-          myVideo.current.srcObject = currentStream;
-        }
-      });
+    if (videoCallOn) {
+      navigator.mediaDevices
+        .getUserMedia({ video: true, audio: true })
+        .then((currentStream) => {
+          setStream(currentStream);
+          if (myVideo.current) {
+            myVideo.current.srcObject = currentStream;
+          }
+        });
+    }
 
     socket.on("me", (id) => setMe(id));
 
     socket.on("calluser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivedCall: true, from, name: callerName, signal });
     });
-  }, []);
+  }, [videoCallOn]);
 
   // Function to handle userVideo stream
   const handleUserStream = (stream) => {
@@ -205,6 +206,8 @@ const ContextProvider = ({ children }) => {
         recording,
         startScreenShare,
         stopScreenShare,
+        videoCallOn,
+        setVideoCallOn,
       }}
     >
       {children}
