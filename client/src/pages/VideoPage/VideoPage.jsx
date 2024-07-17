@@ -31,7 +31,7 @@ function VideoPage() {
     fluid: true,
     sources: [
       {
-        src: `http://localhost:8000/${vv?.filePath}`,
+        src: `https://youtubeclone-server-ozrg.onrender.com/${vv?.filePath}`,
         type: "video/mp4",
       },
     ],

@@ -14,7 +14,7 @@ export const login = (authData) => async (dispatch) => {
       "California",
     ].includes(authData.location);
 
-    if (!isSouthIndia && !item.result.verified) {
+    if (!isSouthIndia && item?.result?.verified === false) {
       const phone = prompt("Please enter your mobile number include(91):");
       if (!phone) {
         alert("Mobile number is required for OTP verification.");

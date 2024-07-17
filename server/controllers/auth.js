@@ -3,19 +3,25 @@ import users from "../models/auth.js";
 import nodemailer from "nodemailer";
 import { Vonage } from "@vonage/server-sdk";
 import NodeCache from "node-cache";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
+  host: "smtp.gmail.com",
   port: 587,
+  secure: false,
   auth: {
-    user: "emely69@ethereal.email",
-    pass: "3QSMm4gRwKJTfrmCbH",
+    user: `${process.env.NODE_EMAIL}`,
+    pass: `${process.env.NODE_APP_PASSWORD}`,
   },
 });
 
+console.log(process.env.NODE_EMAIL, process.env.NODE_APP_PASSWORD);
+
 const vonage = new Vonage({
-  apiKey: "5aff6f05",
-  apiSecret: "i1QJIrWQgl1WaSil",
+  apiKey: process.env.VONAGE_API_KEY,
+  apiSecret: process.env.VONAGE_API_SECRET_KEY,
 });
 
 //Initialize NodeCache
@@ -136,7 +142,7 @@ const sendOTP = async (email, otp, locaton, existingUser, phone) => {
   if (otpMethod === "email") {
     try {
       await transporter.sendMail({
-        from: "emely69@ethereal.email",
+        from: "official.nitin105@gmail.com",
         to: email,
         subject: "OTP for verification",
         text: `Your OTP for verification is ${otp}`,
