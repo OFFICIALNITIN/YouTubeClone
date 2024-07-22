@@ -23,16 +23,14 @@ const ContextProvider = ({ children }) => {
   const userMediaRecorder = useRef(null);
 
   useEffect(() => {
-    if (videoCallOn) {
-      navigator.mediaDevices
-        .getUserMedia({ video: true, audio: true })
-        .then((currentStream) => {
-          setStream(currentStream);
-          if (myVideo.current) {
-            myVideo.current.srcObject = currentStream;
-          }
-        });
-    }
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
+      .then((currentStream) => {
+        setStream(currentStream);
+        if (myVideo.current && videoCallOn) {
+          myVideo.current.srcObject = currentStream;
+        }
+      });
 
     socket.on("me", (id) => setMe(id));
 
